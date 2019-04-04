@@ -1,66 +1,54 @@
 // pages/list/list.js
+const companies = [
+  "Autodesk - 北京/上海",
+  "Cisco - 北京/上海/杭州/苏州",
+  "coolapk (酷安) - 北京/深圳",
+  "Douban (豆瓣) - 北京",
+  "eBay - 上海",
+  "EMC - 上海",
+  "Ericsson - 上海",
+  "Google - 北京/上海",
+  "HP - 上海",
+  "HSBC - 上海",
+  "IBM - 上海 (GBS除外)",
+  "Intel - 上海",
+  "LeetCode - 上海",
+  "LintCode/九章算法 - 杭州/远程",
+  "Microsoft - 北京/上海/苏州",
+  "Oracle - 上海",
+  "PayPal - 上海",
+  "Pivotal - 北京/上海",
+  "RingCentral - 厦门",
+  "SAP - 上海",
+  "Splunk - 上海",
+  "SUSE - 北京/上海/深圳",
+  "ThoughtWorks - 西安/北京/深圳/成都/武汉/上海",
+  "Vipshop (唯品会) - 上海",
+  "VMware - 北京/上海",
+  "WeWork - 上海",
+  "Works Applications - 上海"
+]
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    companies: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      companies: this.getCompanies()
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getCompanies: function () {
+    const list = [];
+    for (let company of companies) {
+      const items = company.split(" - ");
+      list.push({
+        name: items[0],
+        city: items[1]
+      });
+    }
+    return list;
   }
 })

@@ -1,1 +1,21 @@
 /* pages/list/list.wxss */
+.company {
+  background-color: rgb(243, 243, 243);
+  box-sizing: border-box;
+  margin: 20rpx;
+  padding: 20rpx;
+  width: 700rpx;
+  border-radius: 15rpx;
+}
+
+.company .name{
+  font-weight: bolder;
+  font-size: 30rpx;
+  line-height: 40rpx;
+}
+
+.company .city{
+  font-size: 25rpx;
+  line-height: 40rpx;
+  float: right;
+}

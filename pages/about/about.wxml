@@ -1,2 +1,12 @@
 <!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view class="container">
+  <view class="header">
+    <view>关于</view>
+  </view>
+  <view class="body">
+    <view class="paragraph">目前名单上的公司在上海的居多，是因为作者我身处上海，对于上海的情况相对了解。并不意味着 955 的公司大多都在上海。欢迎童鞋们继续到 https://github.com/formulahendry/955.WLB 投票，我会根据投票情况，加入更多公司。如果你觉得 955.WLB 很有用，也可以给我一个赞赏~ 我将会有更大的动力来维护 955.WLB</view>
+    <view>
+      <image bindtap="previewQr" class="qr" mode="aspectFit" src="../../images/admiration-qr.png"></image>
+    </view>
+  </view>
+</view>

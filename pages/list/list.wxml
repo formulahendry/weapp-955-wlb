@@ -1,2 +1,12 @@
 <!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
+<view class="container">
+  <view class="header">
+    <view>995 公司名单</view>
+  </view>
+  <view class="body">
+    <view wx:for="{{companies}}" wx:key="unique" class="company">
+      <text class="name">{{item.name}}</text>
+      <text class="city">{{item.city}}</text>
+    </view>
+  </view>
+</view>

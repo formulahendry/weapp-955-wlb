@@ -5,6 +5,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
+  padding: 20rpx 20rpx;
   box-sizing: border-box;
 } 
+
+.header {
+  font-size: 50rpx;
+}
+
+.body {
+  font-size: 35rpx;
+}
+
+.paragraph {
+  padding-top: 30rpx;
+}

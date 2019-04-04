@@ -1,13 +1,15 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="header">
+    <view>955.WLB</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="body">
+    <view class="paragraph">旨在让更多的人逃离 996，加入 955 的行列。</view>
+    <view class="paragraph">996 工作制：即每天早 9 点到岗，一直工作到晚上 9 点。每周工作 6 天。</view>
+    <view class="paragraph">955 工作制：即每天早 9 点到岗，一直工作到下午 5 点。每周工作 5 天。</view>
+    <view class="paragraph">955.WLB：工作 955，work–life balance (工作与生活的平衡)。</view>
+  </view>
+  <view>
+    <image style="width: 144px; height: 200px;" mode="aspectFit" src="../../images/logo.png"></image>
   </view>
 </view>
