@@ -38,6 +38,9 @@ Page({
     this.setData({
       companies: this.getCompanies()
     });
+    wx.showShareMenu({
+      withShareTicket: true
+    });
   },
 
   getCompanies: function () {
