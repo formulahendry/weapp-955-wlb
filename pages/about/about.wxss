@@ -1,6 +1,7 @@
 /* pages/about/about.wxss */
 .qr {
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
   display: block;
   margin-left: auto;
   margin-right: auto;

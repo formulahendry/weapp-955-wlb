@@ -9,4 +9,5 @@
       <text class="city">{{item.city}}</text>
     </view>
   </view>
+  <ad unit-id="adunit-a809f6d23d5e48b8"></ad>
 </view>

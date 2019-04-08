@@ -9,4 +9,5 @@
       <image bindtap="previewQr" class="qr" mode="aspectFit" src="../../images/admiration-qr.png"></image>
     </view>
   </view>
+  <ad unit-id="adunit-4858337e83ed4728"></ad>
 </view>
