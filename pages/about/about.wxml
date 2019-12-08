@@ -1,13 +1,14 @@
 <!--pages/about/about.wxml-->
 <view class="container">
   <view class="header">
-    <view>关于</view>
+    <view>内推</view>
   </view>
   <view class="body">
-    <view class="paragraph">目前名单上的公司在上海的居多，是因为作者我身处上海，对于上海的情况相对了解。并不意味着 955 的公司大多都在上海。欢迎童鞋们继续到 https://github.com/formulahendry/955.WLB 投票，我会根据投票情况，加入更多公司。如果你觉得 955.WLB 很有用，也可以给我一个赞赏~ 我将会有更大的动力来维护 955.WLB</view>
-    <view>
-      <image bindtap="previewQr" class="qr" mode="aspectFit" src="../../images/admiration-qr.png"></image>
-    </view>
+    <view class="paragraph">目前名单上的公司在上海的居多，是因为作者我身处上海 IT 圈，对于上海的情况相对了解。并不意味着 955 的公司大多都在上海。</view>
+    <view class="paragraph">此外，本人已经成功内推数十人拿到微软 offer。如果对微软有意向，可以在微信中搜索“HJ说”，然后关注“HJ说”公众号，获取最新内推信息！</view>
   </view>
-  <ad unit-id="adunit-4858337e83ed4728"></ad>
 </view>
+<view class="official-account">
+  <official-account></official-account>
+</view>
+<ad unit-id="adunit-4858337e83ed4728"></ad>

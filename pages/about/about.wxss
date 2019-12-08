@@ -6,3 +6,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.body {
+  margin-bottom: 20rpx;
+}
+
+.official-account {
+  margin-bottom: 180rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}

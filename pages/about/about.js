@@ -68,7 +68,7 @@ Page({
 
   previewQr: function() {
     wx.previewImage({
-      urls: ["https://s2.ax1x.com/2019/04/04/A2g6qU.md.png"] 
+      urls: ["https://s2.ax1x.com/2019/12/08/QUTyIe.jpg"] 
     })
   }
 })

@@ -18,4 +18,5 @@
   font-size: 25rpx;
   line-height: 40rpx;
   float: right;
+  padding-top: 8rpx;
 }
