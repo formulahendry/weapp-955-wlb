@@ -8,7 +8,9 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"checkInvalidKey": true,
+		"useCompilerModule": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
