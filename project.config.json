@@ -9,8 +9,19 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
-		"useCompilerModule": false
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
