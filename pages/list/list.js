@@ -1,7 +1,9 @@
 // pages/list/list.js
 const companies = [
+  "Afterpay - 上海",
   "Amazon - 北京/上海",
   "AMD - 上海",
+  "ARM - 上海",
   "Airbnb - 北京",
   "Apple - 北京/上海",
   "ArcSoft - 杭州",
@@ -11,6 +13,7 @@ const companies = [
   "Cisco - 北京/上海/杭州/苏州",
   "Coolapk (酷安) - 北京/深圳",
   "Coupang - 北京/上海",
+  "CSTC (花旗金融) - 上海",
   "Douban (豆瓣) - 北京",
   "eBay - 上海",
   "eHealth 厦门",
@@ -38,6 +41,7 @@ const companies = [
   "Oracle - 上海",
   "PayPal - 上海",
   "Pivotal - 北京/上海",
+  "Qualcomm - 北京/上海",
   "Red Hat - 北京/上海/深圳",
   "RingCentral - 厦门/杭州/香港",
   "SAP - 上海",
@@ -56,6 +60,7 @@ const companies = [
   "WeWork - 上海",
   "Wish - 上海",
   "Works Applications - 上海",
+  "XMind - 深圳",
   "Zhihu (知乎) - 北京",
   "Zoom - 合肥/杭州/苏州"
 ]
