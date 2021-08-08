@@ -1,70 +1,11 @@
 // pages/list/list.js
-const companies = [
-  "Afterpay - 上海",
-  "Amazon - 北京/上海",
-  "AMD - 上海",
-  "ARM - 上海",
-  "Airbnb - 北京",
-  "Apple - 北京/上海",
-  "ArcSoft - 杭州",
-  "Autodesk - 北京/上海",
-  "Booking - 上海",
-  "Citrix - 南京",
-  "Cisco - 北京/上海/杭州/苏州",
-  "Coolapk (酷安) - 北京/深圳",
-  "Coupang - 北京/上海",
-  "CSTC (花旗金融) - 上海",
-  "Douban (豆瓣) - 北京",
-  "eBay - 上海",
-  "eHealth - 厦门",
-  "Electronic Arts - 上海",
-  "EMC - 上海",
-  "Ericsson - 上海",
-  "FreeWheel - 北京",
-  "GE - 上海",
-  "Google - 北京/上海",
-  "Grab - 北京",
-  "Honeywell - 上海",
-  "HP - 上海",
-  "HSBC - 上海/广州/西安",
-  "Hulu - 北京",
-  "IBM (GBS除外) - 上海",
-  "iHerb - 上海",
-  "Intel - 上海",
-  "LeetCode - 上海",
-  "Linkedin - 北京",
-  "Microsoft - 北京/上海/苏州",
-  "MicroStrategy - 杭州",
-  "National Instruments - 上海",
-  "Nokia - 南京/杭州",
-  "NVIDIA - 北京/上海",
-  "Oracle - 上海",
-  "PayPal - 上海",
-  "Pivotal - 北京/上海",
-  "Qualcomm - 北京/上海",
-  "Red Hat - 北京/上海/深圳/西安/remote",
-  "RingCentral - 厦门/杭州/香港",
-  "SAP - 上海",
-  "Shopee - 深圳",
-  "SmartNews - 北京/上海",
-  "Snap - 北京/深圳",
-  "State Street - 杭州",
-  "SUSE - 北京/上海/深圳",
-  "ThoughtWorks - 西安/北京/深圳/成都/武汉/上海/香港",
-  "Trend Micro - 南京",
-  "TuSimple - 北京",
-  "Ubisoft - 上海",
-  "Unity - 上海",
-  "Vipshop (唯品会) - 上海",
-  "VMware - 北京/上海",
-  "WeWork - 上海",
-  "Wish - 上海",
-  "Works Applications - 上海",
-  "XMind - 深圳",
-  "Zhihu (知乎) - 北京",
-  "Zoom - 合肥/杭州/苏州"
-];
-const allCities = "全部城市";
+const util = require('../../utils/util.js')
+
+const companies = []
+const allCities = '全部城市'
+
+// 目前是github地址，在国内可能特别慢，可以考虑使用国内镜像
+const remoteDataUrl = 'https://raw.githubusercontent.com/formulahendry/955.WLB/master/README.md'
 
 Page({
   data: {
@@ -73,55 +14,80 @@ Page({
     cityIndex: 0,
   },
 
-  onLoad: function (options) {
-    const companies = this.getCompanies();
-    const cities = this.getCities(companies);
-    this.setData({
-      companies,
-      cities,
-    });
+  onLoad: async function (options) {
+
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
-    });
+    })
+
+    const companies = await this.fetchCompaniesData()
+    const cities = this.getCities(companies)
+    this.setData({
+      companies,
+      cities,
+    })
   },
 
-  getCompanies: function (city = "") {
-    const list = [];
-    for (let company of companies) {
-      const items = company.split(" - ");
-      if (city) {
-        const cities = items[1].split("/");
-        if (!cities.includes(city)) {
-          continue;
-        }
-      }
-      list.push({
-        name: items[0],
-        city: items[1]
-      });
+  // 从远程获取数据
+  fetchCompaniesData: async function () {
+    // 如果已经存在，则直接返回
+    if (companies.length > 0) {
+      return companies
     }
-    return list;
+    // 开始从远程获取数据
+    wx.showLoading('获取数据中')
+    try {
+      const res = await util.asyncRequest({
+        url: remoteDataUrl
+      })
+      const [companiesString] = res.data.match(/## 955 的公司名单[\s\S]+?## 添加公司/)
+      // 循环匹配
+      const regExp = /\* (.+?) - (.+)/g
+      while (true) {
+        const match = regExp.exec(companiesString)
+        if (!match) break
+        const [, name, city] = match
+        companies.push({
+          name,
+          city
+        })
+      }
+    } catch (e) {
+      wx.showToast({
+        title: '获取数据失败',
+        icon: 'error'
+      })
+    }
+    wx.hideLoading()
+    return companies
+  },
+
+  getCompanies: function (city = '') {
+    if (city === '' || city === allCities)
+      return companies
+    else {
+      return companies.filter(item => item.city && item.city.includes(city))
+    }
   },
 
   getCities: function (companies) {
-    const citySet = new Set();
-    citySet.add(allCities);
+    const citySet = new Set()
+    citySet.add(allCities)
     for (let company of companies) {
-      const cities = company.city.split("/");
+      const cities = company.city.split('/')
       for (let city of cities) {
-        citySet.add(city);
+        citySet.add(city)
       }
     }
-    return Array.from(citySet);
+    return Array.from(citySet)
   },
 
   bindCityPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    const cityIndex = e.detail.value;
-    const city = this.data.cities[cityIndex];
+    const cityIndex = e.detail.value
+    const city = this.data.cities[cityIndex]
     this.setData({
-      companies: this.getCompanies((city === allCities) ? "" : city),
+      companies: this.getCompanies(city),
       cityIndex,
     });
   },
