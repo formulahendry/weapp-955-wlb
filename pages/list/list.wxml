@@ -3,6 +3,16 @@
   <view class="header">
     <view>955 公司名单</view>
   </view>
+  <view class="section">
+    <picker bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cities}}">
+      <view class="picker">
+        选择城市：{{cities[cityIndex]}}
+      </view>
+    </picker>
+    <view class="nunber">
+      公司数量：{{companies.length}}
+    </view>
+  </view>
   <view class="body">
     <view wx:for="{{companies}}" wx:key="unique" class="company">
       <text class="name">{{item.name}}</text>

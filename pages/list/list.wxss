@@ -1,4 +1,15 @@
 /* pages/list/list.wxss */
+.section {
+  padding: 10rpx;
+  font-size: 35rpx;
+}
+
+.picker {
+  padding-bottom: 5rpx;
+  border: solid rgb(189, 189, 189);
+  border-width: 1rpx 0 1rpx;
+}
+
 .company {
   background-color: rgb(243, 243, 243);
   box-sizing: border-box;
@@ -8,13 +19,13 @@
   border-radius: 15rpx;
 }
 
-.company .name{
+.company .name {
   font-weight: bolder;
   font-size: 30rpx;
   line-height: 40rpx;
 }
 
-.company .city{
+.company .city {
   font-size: 25rpx;
   line-height: 40rpx;
   float: right;

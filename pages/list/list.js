@@ -16,7 +16,7 @@ const companies = [
   "CSTC (花旗金融) - 上海",
   "Douban (豆瓣) - 北京",
   "eBay - 上海",
-  "eHealth 厦门",
+  "eHealth - 厦门",
   "Electronic Arts - 上海",
   "EMC - 上海",
   "Ericsson - 上海",
@@ -28,7 +28,7 @@ const companies = [
   "HP - 上海",
   "HSBC - 上海/广州/西安",
   "Hulu - 北京",
-  "IBM - 上海 (GBS除外)",
+  "IBM (GBS除外) - 上海",
   "iHerb - 上海",
   "Intel - 上海",
   "LeetCode - 上海",
@@ -42,7 +42,7 @@ const companies = [
   "PayPal - 上海",
   "Pivotal - 北京/上海",
   "Qualcomm - 北京/上海",
-  "Red Hat - 北京/上海/深圳",
+  "Red Hat - 北京/上海/深圳/西安/remote",
   "RingCentral - 厦门/杭州/香港",
   "SAP - 上海",
   "Shopee - 深圳",
@@ -63,16 +63,22 @@ const companies = [
   "XMind - 深圳",
   "Zhihu (知乎) - 北京",
   "Zoom - 合肥/杭州/苏州"
-]
+];
+const allCities = "全部城市";
 
 Page({
   data: {
-    companies: []
+    companies: [],
+    cities: [],
+    cityIndex: 0,
   },
 
   onLoad: function (options) {
+    const companies = this.getCompanies();
+    const cities = this.getCities(companies);
     this.setData({
-      companies: this.getCompanies()
+      companies,
+      cities,
     });
     wx.showShareMenu({
       withShareTicket: true,
@@ -80,15 +86,43 @@ Page({
     });
   },
 
-  getCompanies: function () {
+  getCompanies: function (city = "") {
     const list = [];
     for (let company of companies) {
       const items = company.split(" - ");
+      if (city) {
+        const cities = items[1].split("/");
+        if (!cities.includes(city)) {
+          continue;
+        }
+      }
       list.push({
         name: items[0],
         city: items[1]
       });
     }
     return list;
-  }
+  },
+
+  getCities: function (companies) {
+    const citySet = new Set();
+    citySet.add(allCities);
+    for (let company of companies) {
+      const cities = company.city.split("/");
+      for (let city of cities) {
+        citySet.add(city);
+      }
+    }
+    return Array.from(citySet);
+  },
+
+  bindCityPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    const cityIndex = e.detail.value;
+    const city = this.data.cities[cityIndex];
+    this.setData({
+      companies: this.getCompanies((city === allCities) ? "" : city),
+      cityIndex,
+    });
+  },
 })
