@@ -2,5 +2,6 @@
   "projectname": "weapp-955-wlb",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "3.7.7"
 }
